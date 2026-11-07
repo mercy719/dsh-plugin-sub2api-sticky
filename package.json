@@ -1,0 +1,44 @@
+{
+  "name": "dsh-plugin-sub2api-sticky",
+  "version": "0.1.0",
+  "description": "Keeps each DeepSeek Harness conversation on one Sub2API upstream account so the Claude prompt cache stays warm. No settings, no UI. 让 DSH 的每个对话固定在 Sub2API 的同一个上游账号上，保住 Claude 提示缓存；无设置、无界面。",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "sub2api",
+    "claude",
+    "prompt-cache",
+    "sticky-session"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mercy719/dsh-plugin-sub2api-sticky.git"
+  }
+}

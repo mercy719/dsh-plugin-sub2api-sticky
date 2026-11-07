@@ -1,0 +1,5 @@
+# dsh-plugin-sub2api-sticky: no settings, no UI. Inserted as its own row; it
+# leaves the official llm-pi-ai row and its config untouched.
+- insert:
+    - id: sub2api-sticky
+      name: dsh-plugin-sub2api-sticky
