@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-sub2api-sticky",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Keeps each DeepSeek Harness conversation on one Sub2API upstream account so the Claude prompt cache stays warm. No settings, no UI. 让 DSH 的每个对话固定在 Sub2API 的同一个上游账号上，保住 Claude 提示缓存；无设置、无界面。",
   "type": "module",
   "main": "./lib/index.js",

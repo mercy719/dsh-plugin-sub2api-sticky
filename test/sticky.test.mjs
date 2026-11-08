@@ -14,15 +14,17 @@ test('user_id matches Sub2API and is stable per session', () => {
   assert.notEqual(SUB2API.exec(a)[3], SUB2API.exec(userIdFor('s2', DEV))[3])
 })
 
-test('only Anthropic requests with a session and no user_id are touched', () => {
+test('Anthropic requests get user_id and 1h cache unless already set', () => {
   const opts = Object.freeze({ sessionId: 's1', metadata: Object.freeze({ x: 1 }) })
   const out = withUserId(opts, anthropic, DEV)
   assert.deepEqual(out.metadata, { x: 1, user_id: userIdFor('s1', DEV) })
+  assert.equal(out.cacheRetention, 'long')
   assert.equal(withUserId(opts, { api: 'openai-completions' }, DEV), opts)
-  const noSession = { metadata: {} }
-  assert.equal(withUserId(noSession, anthropic, DEV), noSession)
-  const own = { sessionId: 's1', metadata: { user_id: 'mine' } }
+  const noSession = withUserId({ metadata: {} }, anthropic, DEV)
+  assert.deepEqual(noSession, { metadata: {}, cacheRetention: 'long' })
+  const own = { sessionId: 's1', metadata: { user_id: 'mine' }, cacheRetention: 'short' }
   assert.equal(withUserId(own, anthropic, DEV), own)
+  assert.equal(withUserId({ cacheRetention: 'none' }, anthropic, DEV).cacheRetention, 'none')
 })
 
 test('apply patches official adapters, including late ones, and stops on dispose', async () => {
