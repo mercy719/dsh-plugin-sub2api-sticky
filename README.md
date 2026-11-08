@@ -6,7 +6,7 @@
 dsh plugin --profile web add github:mercy719/dsh-plugin-sub2api-sticky#main
 ```
 
-装完重启 dsh。升级到新版：重新执行上面的安装命令后重启。卸载：`dsh plugin --profile web remove dsh-plugin-sub2api-sticky`。
+装完重启 dsh。升级到新版：`dsh plugin --profile web update dsh-plugin-sub2api-sticky` 后重启。卸载：`dsh plugin --profile web remove dsh-plugin-sub2api-sticky`。
 
 ## 为什么需要
 
